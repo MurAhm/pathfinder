@@ -1,14 +1,13 @@
-package com.example.pathfinder.model.entity;
+package com.example.pathfinder.model.service;
 
+import com.example.pathfinder.model.entity.Role;
 import com.example.pathfinder.model.entity.enums.LevelEnum;
 
-import javax.persistence.*;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
-public class User extends BaseEntity {
+public class UserServiceModel {
 
+    private Long id;
     private String fullName;
     private String username;
     private String password;
@@ -17,10 +16,17 @@ public class User extends BaseEntity {
     private Set<Role> roles;
     private LevelEnum level;
 
-    public User() {
+    public UserServiceModel() {
     }
 
-    @Column(nullable = false)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getFullName() {
         return fullName;
     }
@@ -29,16 +35,14 @@ public class User extends BaseEntity {
         this.fullName = fullName;
     }
 
-    @Column(nullable = false, unique = true)
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String userName) {
-        this.username = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    @Column(nullable = false)
     public String getPassword() {
         return password;
     }
@@ -51,12 +55,10 @@ public class User extends BaseEntity {
         return email;
     }
 
-    @Column
     public void setEmail(String email) {
         this.email = email;
     }
 
-    @Column(name = "age")
     public Integer getAge() {
         return age;
     }
@@ -65,7 +67,6 @@ public class User extends BaseEntity {
         this.age = age;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
     public Set<Role> getRoles() {
         return roles;
     }
@@ -74,7 +75,6 @@ public class User extends BaseEntity {
         this.roles = roles;
     }
 
-    @Enumerated(EnumType.STRING)
     public LevelEnum getLevel() {
         return level;
     }
